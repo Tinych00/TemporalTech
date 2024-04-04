@@ -3,52 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Background GIF Example</title>
+<title>Background GIF</title>
 <style>
-  body {
-    margin: 0;
-    padding: 0;
-    /* Set the background image and ensure it covers the whole viewport */
-    background-image: url('assets\grey_sam.gif');
-    background-size: cover;
-    /* Set background to fixed so it doesn't move when scrolling */
-    background-attachment: fixed;
-    /* Loop the background image */
-    -webkit-animation: slide 10s linear infinite;
-    -moz-animation: slide 10s linear infinite;
-    -ms-animation: slide 10s linear infinite;
-    -o-animation: slide 10s linear infinite;
-    animation: slide 10s linear infinite;
-  }
-  
-  /* Define the animation */
-  @keyframes slide {
-    0% { background-position: 0 0; }
-    100% { background-position: 100% 0; }
-  }
-  
-  @-webkit-keyframes slide {
-    0% { background-position: 0 0; }
-    100% { background-position: 100% 0; }
-  }
-  
-  @-moz-keyframes slide {
-    0% { background-position: 0 0; }
-    100% { background-position: 100% 0; }
-  }
-  
-  @-ms-keyframes slide {
-    0% { background-position: 0 0; }
-    100% { background-position: 100% 0; }
-  }
-  
-  @-o-keyframes slide {
-    0% { background-position: 0 0; }
-    100% { background-position: 100% 0; }
-  }
+    body {
+        margin: 0;
+        padding: 0;
+        background-image: url('asset\grey_sam.gif'); /* Path to your GIF */
+        background-size: cover; /* Cover the entire background */
+        background-repeat: no-repeat; /* Prevent the background from repeating */
+        animation: animateBackground 5s infinite; /* Adjust the duration and timing of animation */
+    }
+
+    @keyframes animateBackground {
+        0% {
+            /* Define initial properties */
+            background-position: 0 0;
+        }
+        100% {
+            /* Define final properties */
+            background-position: 100% 100%;
+        }
+    }
 </style>
 </head>
 <body>
-    <p>Text here.</p>
+    <!-- Your HTML content goes here -->
+    <h1>Welcome to My Website</h1>
+    <p>This is some text.</p>
 </body>
 </html>
