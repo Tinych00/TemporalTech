@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en-au">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TemporalTech</title>
+    <link rel="stylesheet" href="style_sheet.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://backgrounds.gallery/en/animated/1492660/102811-Glitch%20Sansui-zu%20(animated)');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .navbar img {
+            width: 77px;
+            height: 69px;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .navbar li {
+            margin-right: 20px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .header {
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .slideshow-container {
+            max-width: 800px;
+            position: relative;
+            margin: auto;
+        }
+
+        .Slides {
+            display: none;
+        }
+
+        .Slides img {
+            width: 100%;
+            height: auto;
+        }
+
+        .numbertext {
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: white;
+        }
+
+        .text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+        }
+
+        .footer {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+
+        .footer-links {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        .footer-bottom {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <a href="index.html"><img src="assets/TemporalTech_Logo.png" alt="TemporalTech Logo"></a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about_us.html">About Us</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="more.html">More</a></li>
+            </ul>
+        </div>
+        <div class="header">
+            <h1>Welcome to TemporalTech</h1>
+            <p>We specialize in digital solutions for the future.</p>
+        </div>
+
+        <div class="slideshow-container">
+            <!-- Slides go here -->
+        </div>
+
+        <div style="text-align:center">
+            <span class="dot"></span> 
+            <span class="dot"></span> 
+            <span class="dot"></span> 
+            <span class="dot"></span> 
+            <span class="dot"></span> 
+            <span class="dot"></span> 
+            <span class="dot"></span> 
+        </div>
+
+        <footer class="footer">
+            <div class="footer-links">
+                <ul>
+                    <li><a href="about_us.html">About Us</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="more.html">More</a></li>
+                </ul>
+            </div>
+            <p>&copy; 2024 TemporalTech. All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // JavaScript for slideshow functionality
+    </script>
+</body>
+</html>
