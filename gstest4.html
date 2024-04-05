@@ -9,15 +9,40 @@
     margin: 0;
     padding: 0;
     overflow: hidden; /* Prevents horizontal scroll */
+    position: relative; /* Make sure the absolutely positioned elements are relative to the body */
   }
 
   img {
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 100vw; /* 100% of viewport width */
     height: 100vh; /* 100% of viewport height */
-    z-index: -1; /* Ensures the image is behind other content */
+  }
+
+  .area-overlay {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0); /* Transparent background */
+    cursor: pointer;
+  }
+
+  /* Define the styles for each area */
+  .area1 { /* Computer */
+    top: 393px;
+    left: 273px;
+    width: 54px;
+    height: 36px;
+  }
+
+  .area2 { /* Phone */
+    top: 747px;
+    left: 90px;
+    width: 73px;
+    height: 42px;
+  }
+
+  .area3 { /* Coffee */
+    top: 679px;
+    left: 1605px;
+    width: 40px;
+    height: 98px;
   }
 </style>
 </head>
@@ -33,7 +58,11 @@
     <area shape="rect" coords="90,747,163,789" alt="Phone" href="phone.htm">
     <area shape="rect" coords="1605,679,1645,777" alt="Coffee" href="coffee.htm">
   </map>
+
+  <!-- Transparent overlays for image mapping -->
+  <div class="area-overlay area1"></div>
+  <div class="area-overlay area2"></div>
+  <div class="area-overlay area3"></div>
     
 </body>
 </html>
-
