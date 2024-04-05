@@ -1,35 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hidden Links within an Image</title>
-    <style>
-        /* Hide the links */
-        .hidden-link {
-            position: absolute;
-            top: -9999px;
-            left: -9999px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animated Background</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-image: url('assets/grey_sam.gif');
+    background-size: cover; /* This ensures the background image covers the entire viewport */
+    background-repeat: no-repeat; /* Prevents the background from repeating */
+    background-attachment: fixed; /* Fixes the background image, so it doesn't move when scrolling */
+    animation: animateBG 10s linear infinite; /* Adjust duration (10s) and timing function as per your preference */
+  }
+
+  @keyframes animateBG {
+    0% {
+      background-position: 0% 50%; /* Initial position of the background image */
+    }
+    100% {
+      background-position: 100% 50%; /* Final position of the background image */
+    }
+  }
+</style>
 </head>
+    
 <body>
 
-<!-- Define the image with the image map -->
-<img src="https://cdn-ipjin.nitrocdn.com/XanaKvqIbxOjwdqckAPgwxxsIadfODhe/assets/images/optimized/rev-6f9522f/www.avaccess.com/wp-content/uploads/2023/02/What-Are-the-Benefits-of-Dual-Monitors.jpg" alt="Dual Monitors" usemap="#image-map">
+<img src="assets/grey_sam.gif" alt="Workplace" usemap="#workmap">
 
-<!-- Define the image map -->
-<map name="image-map">
-    <!-- Define clickable areas and their links -->
-    <area shape="rect" coords="0,0,620,465" alt="Screen 1" href="link1.html">
-    <area shape="rect" coords="680,0,1279,465" alt="Screen 2" href="link2.html">
-    <area shape="rect" coords="0,480,1279,960" alt="Screen 3" href="link3.html">
+<map name="workmap">
+  <area shape="rect" coords="273,393,327,429" alt="Computer" href="computer.htm">
+  <area shape="rect" coords="90,747,163,789" alt="Phone" href="phone.htm">
+  <area shape="rect" coords="1605,679,1645,777" alt="Coffee" href="coffee.htm">
 </map>
-
-<!-- Hidden links -->
-<a class="hidden-link" href="link1.html">Hidden Link 1</a>
-<a class="hidden-link" href="link2.html">Hidden Link 2</a>
-<a class="hidden-link" href="link3.html">Hidden Link 3</a>
-
+    <!-- Your HTML content goes here -->
+    <h1>Welcome to My Website</h1>
+    <p>This is some text.</p>
+    
 </body>
 </html>
