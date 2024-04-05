@@ -13,35 +13,28 @@
     background-repeat: no-repeat; /* Prevents the background from repeating */
     background-attachment: fixed; /* Fixes the background image, so it doesn't move when scrolling */
     animation: animateBG 10s linear infinite; /* Adjust duration (10s) and timing function as per your preference */
-    position: relative; /* Set position to relative to allow absolute positioning of elements inside body */
   }
 
-
-  /* Hide the links */
-  .hidden-link {
-      position: absolute;
-      top: -9999px;
-      left: -9999px;
+  /* Hide the image */
+  img {
+    display: none;
   }
 </style>
 </head>
     
 <body>
 
-<!-- Define the image map -->
-<map name="workmap">
-  <area shape="rect" coords="273,393,327,429" alt="Computer" href="computer.htm">
-  <area shape="rect" coords="90,747,163,789" alt="Phone" href="phone.htm">
-  <area shape="rect" coords="1605,679,1645,777" alt="Coffee" href="coffee.htm">
-</map>
+  <!-- Image is hidden -->
+  <img src="assets/grey_sam.gif" alt="Workplace" usemap="#workmap">  
 
-<h1>Welcome to My Website</h1>
-<p>This is some text.</p>
+  <map name="workmap">
+    <area shape="rect" coords="273,393,327,429" alt="Computer" href="computer.htm">
+    <area shape="rect" coords="90,747,163,789" alt="Phone" href="phone.htm">
+    <area shape="rect" coords="1605,679,1645,777" alt="Coffee" href="coffee.htm">
+  </map>
 
-<!-- Hidden links -->
-<a class="hidden-link" href="computer.htm">Computer Link</a>
-<a class="hidden-link" href="phone.htm">Phone Link</a>
-<a class="hidden-link" href="coffee.htm">Coffee Link</a>
-
+  <h1>Welcome to My Website</h1>
+  <p>This is some text.</p>
+    
 </body>
 </html>
