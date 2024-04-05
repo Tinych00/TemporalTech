@@ -1,34 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Background GIF</title>
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-        background-image: url('assets/grey_sam.gif'); /* Path to your GIF */
-        background-size: cover; /* Cover the entire background */
-        background-repeat: no-repeat; /* Prevent the background from repeating */
-        animation: animateBackground 5s infinite; /* Adjust the duration and timing of animation */
-    }
-
-    @keyframes animateBackground {
-        0% {
-            /* Define initial properties */
-            background-position: 0 0;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hidden Links within an Image</title>
+    <style>
+        /* Hide the links */
+        .hidden-link {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
         }
-        100% {
-            /* Define final properties */
-            background-position: 100% 100%;
-        }
-    }
-</style>
+    </style>
 </head>
 <body>
-    <!-- Your HTML content goes here -->
-    <h1>Welcome to My Website</h1>
-    <p>This is some text.</p>
+
+<!-- Define the image with the image map -->
+<img src="your-image.jpg" alt="Your Image" usemap="#image-map">
+
+<!-- Define the image map -->
+<map name="image-map">
+    <!-- Define clickable areas and their links -->
+    <area shape="rect" coords="0,0,50,50" alt="Area 1" href="link1.html">
+    <area shape="circle" coords="100,100,50" alt="Area 2" href="link2.html">
+    <area shape="poly" coords="200,200,250,250,200,300" alt="Area 3" href="link3.html">
+</map>
+
+<!-- Hidden links -->
+<a class="hidden-link" href="link1.html">Link 1</a>
+<a class="hidden-link" href="link2.html">Link 2</a>
+<a class="hidden-link" href="link3.html">Link 3</a>
+
 </body>
 </html>
