@@ -1,54 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Animated Background</title>
-<style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hidden Links within an Image</title>
+    <style>
         /* Hide the links */
         .hidden-link {
             position: absolute;
             top: -9999px;
             left: -9999px;
-        
-  body {
-    margin: 0;
-    padding: 0;
-    background-image: url('assets/grey_sam.gif');
-    background-size: cover; /* This ensures the background image covers the entire viewport */
-    background-repeat: no-repeat; /* Prevents the background from repeating */
-    background-attachment: fixed; /* Fixes the background image, so it doesn't move when scrolling */
-    animation: animateBG 10s linear infinite; /* Adjust duration (10s) and timing function as per your preference */
-  }
-
-  @keyframes animateBG {
-    0% {
-      background-position: 0% 50%; /* Initial position of the background image */
-    }
-    100% {
-      background-position: 100% 50%; /* Final position of the background image */
-    }
-  }
-</style>
+        }
+    </style>
 </head>
 <body>
-    <!-- Your HTML content goes here -->
-    <h1>Welcome to My Website</h1>
-    <p>This is some text.</p>
-  <!-- Define the image with the image map -->
-<img src="your-image.jpg" alt="Your Image" usemap="#image-map">
+
+<!-- Define the image with the image map -->
+<img src="https://cdn-ipjin.nitrocdn.com/XanaKvqIbxOjwdqckAPgwxxsIadfODhe/assets/images/optimized/rev-6f9522f/www.avaccess.com/wp-content/uploads/2023/02/What-Are-the-Benefits-of-Dual-Monitors.jpg" alt="Dual Monitors" usemap="#image-map">
 
 <!-- Define the image map -->
 <map name="image-map">
     <!-- Define clickable areas and their links -->
-    <area shape="rect" coords="0,0,50,50" alt="Area 1" href="link1.html">
-    <area shape="circle" coords="100,100,50" alt="Area 2" href="link2.html">
-    <area shape="poly" coords="200,200,250,250,200,300" alt="Area 3" href="link3.html">
+    <area shape="rect" coords="0,0,620,465" alt="Screen 1" href="link1.html">
+    <area shape="rect" coords="680,0,1279,465" alt="Screen 2" href="link2.html">
+    <area shape="rect" coords="0,480,1279,960" alt="Screen 3" href="link3.html">
 </map>
 
 <!-- Hidden links -->
-<a class="hidden-link" href="link1.html">Link 1</a>
-<a class="hidden-link" href="link2.html">Link 2</a>
-<a class="hidden-link" href="link3.html">Link 3</a>
+<a class="hidden-link" href="link1.html">Hidden Link 1</a>
+<a class="hidden-link" href="link2.html">Hidden Link 2</a>
+<a class="hidden-link" href="link3.html">Hidden Link 3</a>
+
 </body>
 </html>
