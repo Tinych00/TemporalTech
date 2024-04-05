@@ -5,34 +5,68 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Animated Background</title>
 <style>
-  body, html {
+  body {
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+    overflow: hidden; /* Prevents horizontal scroll */
+    position: relative; /* Make sure the absolutely positioned elements are relative to the body */
   }
 
-  #background-image {
-    background-image: url('assets/grey_sam.gif');
-    background-repeat: no-repeat;
-    background-size: cover; /* or contain, depending on your preference */
-    width: 100%;
-    height: 100%;
+  img {
+    width: 100vw; /* 100% of viewport width */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Ensure the image doesn't leave any gap */
+  }
+
+  .area-overlay {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0); /* Transparent background */
+    cursor: pointer;
+  }
+
+  /* Define the styles for each area */
+  .area1 { /* Computer */
+    top: 393px;
+    left: 273px;
+    width: 54px;
+    height: 36px;
+  }
+
+  .area2 { /* Phone */
+    top: 747px;
+    left: 90px;
+    width: 73px;
+    height: 42px;
+  }
+
+  .area3 { /* Coffee */
+    top: 679px;
+    left: 1605px;
+    width: 40px;
+    height: 98px;
   }
 </style>
 </head>
     
 <body>
 
-<div id="background-image" usemap="#workmap">
-  <!-- Image map -->
-  <map name="workmap">
-    <area shape="rect" coords="273,393,327,429" alt="Computer" href="computer.htm">
-    <area shape="rect" coords="90,747,163,789" alt="Phone" href="phone.htm">
-    <area shape="rect" coords="1605,679,1645,777" alt="Coffee" href="coffee.htm">
-  </map>
-</div>
-    
+<!-- Image with mapping -->
+<img src="assets/grey_sam.gif" alt="Workplace" usemap="#workmap">
+
+<!-- Image map -->
+<map name="workmap">
+  <area shape="rect" coords="273,393,327,429" alt="Computer" href="computer.htm">
+  <area shape="rect" coords="90,747,163,789" alt="Phone" href="phone.htm">
+  <area shape="rect" coords="1605,679,1645,777" alt="Coffee" href="coffee.htm">
+</map>
+
+<!-- Transparent overlays for image mapping -->
+<div class="area-overlay area1"></div>
+<div class="area-overlay area2"></div>
+<div class="area-overlay area3"></div>
+
+<h1>Welcome to My Website</h1>
+<p>This is some text.</p>
+
 </body>
 </html>
