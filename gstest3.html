@@ -5,21 +5,51 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Animated Background</title>
 <style>
-  body {
-    margin: 0;
-    padding: 0;
-    background-image: url('assets/grey_sam.gif');
-    background-size: cover; /* This ensures the background image covers the entire viewport */
-    background-repeat: no-repeat; /* Prevents the background from repeating */
-    background-attachment: fixed; /* Fixes the background image, so it doesn't move when scrolling */
-    animation: animateBG 10s linear infinite; /* Adjust duration (10s) and timing function as per your preference */
+  /* Set image width to 100% of viewport */
+  img {
+    width: 100vw;
+    height: auto;
   }
-
 </style>
 </head>
+    
 <body>
-    <!-- Your HTML content goes here -->
-    <h1>Welcome to My Website</h1>
-    <p>This is some text.</p>
+
+ <!-- Image -->
+  <img id="resizable-image" src="assets/grey_sam.gif" alt="Workplace">
+  <!-- Image map -->
+  <map name="workmap" id="workmap">
+    <area shape="rect" coords="273,393,327,429" alt="Computer" href="computer.htm">
+    <area shape="rect" coords="90,747,163,789" alt="Phone" href="phone.htm">
+    <area shape="rect" coords="1605,679,1645,777" alt="Coffee" href="coffee.htm">
+  </map>
+
+<script>
+  window.onload = function() {
+    resizeImageMap();
+    window.addEventListener('resize', resizeImageMap);
+  };
+
+  function resizeImageMap() {
+    var img = document.getElementById('resizable-image');
+    var map = document.getElementById('workmap');
+    var areas = map.getElementsByTagName('area');
+    var widthRatio = img.width / img.naturalWidth;
+    var heightRatio = img.height / img.naturalHeight;
+
+    for (var i = 0; i < areas.length; i++) {
+      var coords = areas[i].getAttribute('coords').split(',');
+      for (var j = 0; j < coords.length; j++) {
+        if (j % 2 === 0) {
+          coords[j] = Math.round(coords[j] * widthRatio);
+        } else {
+          coords[j] = Math.round(coords[j] * heightRatio);
+        }
+      }
+      areas[i].setAttribute('coords', coords.join(','));
+    }
+  }
+</script>
+    
 </body>
 </html>
