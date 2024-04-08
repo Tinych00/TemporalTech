@@ -6,10 +6,11 @@
     <title>TemporalTech</title>
     <link rel="stylesheet" href="style_sheet.css">
     <style>
-        /* Set the image to always fit the page */
+        /* Set the image to fit within the screen borders */
         img {
             width: 100vw; /* 100% of viewport width */
-            height: auto; /* Maintain aspect ratio */
+            height: 100vh; /* 100% of viewport height */
+            object-fit: contain; /* Fit the entire image within the container while maintaining aspect ratio */
             display: block; /* Ensure proper block-level rendering */
         }
     </style>
