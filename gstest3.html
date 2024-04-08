@@ -5,20 +5,64 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Animated Background</title>
 <style>
+  body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevents horizontal scroll */
+    position: relative; /* Make sure the absolutely positioned elements are relative to the body */
+  }
 
-  
+  img {
+    width: 100vw; /* 100% of viewport width */
+    height: 100vh; /* 100% of viewport height */
+  }
+
+  .area-overlay {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0); /* Transparent background */
+    cursor: pointer;
+  }
+
+  /* Define the styles for each area */
+  .area1 { /* Computer */
+    top: 20%; /* Adjusted to cover the screen area */
+    left: 14%; /* Adjusted to cover the screen area */
+    width: 2.8%; /* Adjusted to cover the screen area */
+    height: 1.7%; /* Adjusted to cover the screen area */
+  }
+
+  .area2 { /* Phone */
+    top: 44%; /* Adjusted to cover the screen area */
+    left: 5%; /* Adjusted to cover the screen area */
+    width: 3.8%; /* Adjusted to cover the screen area */
+    height: 2.2%; /* Adjusted to cover the screen area */
+  }
+
+  .area3 { /* Coffee */
+    top: 63%; /* Adjusted to cover the screen area */
+    left: 83%; /* Adjusted to cover the screen area */
+    width: 2.1%; /* Adjusted to cover the screen area */
+    height: 3.7%; /* Adjusted to cover the screen area */
+  }
 </style>
 </head>
     
 <body>
 
- <!-- Image -->
-  <img src="assets/grey_sam.gif" alt="Workplace" usemap="#workmap" width="1920" height="1080">
+  <!-- Image -->
+  <img src="assets/grey_sam.gif" alt="Workplace" usemap="#workmap">  
+
   <!-- Image map -->
   <map name="workmap">
-    <area shape="rect" coords="273,393,327,429" alt="Computer" href="computer.htm">
-    <area shape="rect" coords="90,747,163,789" alt="Phone" href="phone.htm">
-    <area shape="rect" coords="1605,679,1645,777" alt="Coffee" href="coffee.htm">
+    <area shape="rect" coords="14%, 20%, 17%, 22%" alt="Computer" href="computer.html"> <!-- Adjusted coordinates -->
+    <area shape="rect" coords="5%, 44%, 9%, 46%" alt="Phone" href="phone.html"> <!-- Adjusted coordinates -->
+    <area shape="rect" coords="83%, 63%, 85%, 67%" alt="Coffee" href="coffee.html"> <!-- Adjusted coordinates -->
   </map>
+
+  <!-- Transparent overlays for image mapping -->
+  <div class="area-overlay area1"></div>
+  <div class="area-overlay area2"></div>
+  <div class="area-overlay area3"></div>
+    
 </body>
 </html>
