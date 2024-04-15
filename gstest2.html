@@ -9,13 +9,13 @@
   body {
     margin: 0;
     padding: 0;
-    overflow: hidden; /* Prevents horizontal scroll */
+    overflow: hidden;
     position: relative; /* Make sure the absolutely positioned elements are relative to the body */
   }
 
   img {
-    width: 100%; /* Set image width to 100% of its container */
-    height: auto; /* Maintain aspect ratio */
+    width: 100%; /* Adjusted width to maintain aspect ratio */
+    height: auto; /* Allow the height to adjust proportionally */
   }
 
   /* Improve accessibility by adding a border to image map areas */
@@ -32,13 +32,14 @@
 <body>
 
  <!-- Image -->
-  <img src="assets/temoral.png" alt="Workplace" usemap="#workmap" width="1920" height="1080">
+  <img src="assets/temoral.png" alt="Workplace" usemap="#workmap">
 
   <!-- Image map -->
   <map name="workmap">
-    <!-- Adjusted coordinates for a polygon shape -->
-    <area shape="poly" coords="17.9%, 45.2%, 37.7%, 44.1%, 37.7%, 61.4%, 18.8%, 68.3%" alt="Computer" href="google.html">
+    <!-- Adjusted coordinates for the new image size -->
+    <area shape="poly" coords="18%,45%, 38%,44%, 38%,62%, 19%,68%" alt="Computer" href="google.html">
   </map>
 
 </body>
 </html>
+
