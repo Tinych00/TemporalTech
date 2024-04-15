@@ -14,16 +14,8 @@
   }
 
   img {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    margin: auto;
+    width: 100%; /* Set image width to 100% of its container */
+    height: auto; /* Maintain aspect ratio */
   }
 
   /* Improve accessibility by adding a border to image map areas */
@@ -40,11 +32,12 @@
 <body>
 
  <!-- Image -->
-  <img src="assets/temoral.png" alt="Workplace" usemap="#workmap">
+  <img src="assets/temoral.png" alt="Workplace" usemap="#workmap" width="1920" height="1080">
 
   <!-- Image map -->
   <map name="workmap">
-    <area shape="poly" coords="352,488,722,476,724,661,366,738" alt="Computer" href="google.html">
+    <!-- Adjusted coordinates for a polygon shape -->
+    <area shape="poly" coords="17.9%, 45.2%, 37.7%, 44.1%, 37.7%, 61.4%, 18.8%, 68.3%" alt="Computer" href="google.html">
   </map>
 
 </body>
