@@ -5,62 +5,41 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Animated Background</title>
 <style>
-  /* Reset default margin and padding */
   body {
     margin: 0;
     padding: 0;
     overflow: hidden; /* Prevents horizontal scroll */
+    position: relative; /* Make sure the absolutely positioned elements are relative to the body */
   }
 
-  /* Set the image to cover the entire viewport */
   img {
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover; /* Maintain aspect ratio and cover the entire space */
-    display: block;
+    width: 100vw; /* 100% of viewport width */
+    height: 100vh; /* 100% of viewport height */
   }
 
-  /* Transparent overlay for image mapping */
-  .area-overlay {
-    position: absolute;
-    background-color: transparent;
-    cursor: pointer;
+  /* Improve accessibility by adding a border to image map areas */
+  area {
+    outline: 2px solid transparent;
   }
 
-  /* Define the styles for each area */
-  .area1 { /* Computer */
-    top: 21%; /* Adjusted position based on image's dimensions */
-    left: 15%; /* Adjusted position based on image's dimensions */
-    width: 2.8%; /* Adjusted width based on image's dimensions */
-    height: 1.5%; /* Adjusted height based on image's dimensions */
-  }
-
-  .area2 { /* Phone */
-    top: 45%; /* Adjusted position based on image's dimensions */
-    left: 5%; /* Adjusted position based on image's dimensions */
-    width: 3.8%; /* Adjusted width based on image's dimensions */
-    height: 2%; /* Adjusted height based on image's dimensions */
-  }
-
-  .area3 { /* Coffee */
-    top: 62%; /* Adjusted position based on image's dimensions */
-    left: 84%; /* Adjusted position based on image's dimensions */
-    width: 2%; /* Adjusted width based on image's dimensions */
-    height: 3.5%; /* Adjusted height based on image's dimensions */
+  /* Style the image map areas */
+  area:hover {
+    outline-color: red; /* Change the outline color on hover */
   }
 </style>
 </head>
     
 <body>
 
-  <!-- Image -->
-  <img src="assets/grey_sam.gif" alt="Workplace" usemap="#workmap">  
+ <!-- Image -->
+  <img src="assets/temoral.png" alt="Workplace" usemap="#workmap">
 
   <!-- Image map -->
   <map name="workmap">
-    <area class="area-overlay area1" shape="rect" coords="273,393,327,429" alt="Computer" href="computer.html">
-    <area class="area-overlay area2" shape="rect" coords="90,747,163,789" alt="Phone" href="phone.html">
-    <area class="area-overlay area3" shape="rect" coords="1605,679,1645,777" alt="Coffee" href="coffee.html">
+    <area shape="rect" coords="352,488,724,661" alt="Computer" href="Heavenly_black.html">
+    <area shape="rect" coords="726,477,1023,643" alt="Phone" href="Sally_black.html">
+    <area shape="rect" coords="1028,475,1339,663" alt="Coffee" href="index.html">
   </map>
+
 </body>
 </html>
