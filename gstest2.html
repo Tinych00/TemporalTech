@@ -4,18 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Animated Background</title>
-
 <style>
   body {
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    overflow: hidden; /* Prevents horizontal scroll */
     position: relative; /* Make sure the absolutely positioned elements are relative to the body */
   }
 
   img {
-    width: 100%; /* Adjusted width to maintain aspect ratio */
-    height: auto; /* Allow the height to adjust proportionally */
+    width: 100%; /* 100% of viewport width */
+    height: 100%; /* 100% of viewport height */
   }
 
   /* Improve accessibility by adding a border to image map areas */
@@ -27,19 +26,25 @@
   area:hover {
     outline-color: red; /* Change the outline color on hover */
   }
-</style>
+  
+    
+    </style>
 </head>
 <body>
+    
 
  <!-- Image -->
   <img src="assets/temoral.png" alt="Workplace" usemap="#workmap">
 
   <!-- Image map -->
   <map name="workmap">
-    <!-- Adjusted coordinates for the new image size -->
-    <area shape="poly" coords="18%,45%, 38%,44%, 38%,62%, 19%,68%" alt="Computer" href="google.html">
+  <!--  <area shape="rect" coords="352,488,724,661" alt="Computer" href="Heavenly_black.html"> -->
+    <area shape="poly" coords="352,488,722,476,724,661,366,738" alt="Computer" href="Heavenly_black.html">
+   <!-- <area shape="rect" coords="726,477,1023,643" alt="Phone" href="Sally_black.html">
+    <area shape="rect" coords="1028,475,1339,663" alt="Coffee" href="index.html"> -->
   </map>
 
+<!-- <area shape="poly" coords="140,121,181,116,204,160,204,222,191,270,140,329,85,355,58,352,37,322,40,259,103,161,128,147" */ -->
+  
 </body>
 </html>
-
