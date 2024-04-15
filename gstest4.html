@@ -11,9 +11,12 @@
     overflow: hidden; /* Prevents horizontal scroll */
     position: relative; /* Make sure the absolutely positioned elements are relative to the body */
   }
- img {
-    width: 100vw; /* 100% of viewport width */
-    height: 100vh; /* 100% of viewport height */
+
+  img {
+    width: 100%; /* 100% of viewport width */
+    height: 100%; /* 100% of viewport height */
+  }
+
   /* Improve accessibility by adding a border to image map areas */
   area {
     outline: 2px solid transparent;
@@ -28,14 +31,15 @@
     </style>
 </head>
 <body>
-  
+    
+
  <!-- Image -->
-  <img src="assets/temoral_web.png" alt="Workplace" usemap="#workmap">
+  <img src="assets/temoral.png" alt="Workplace" usemap="#workmap">
 
   <!-- Image map -->
   <map name="workmap">
   <!--  <area shape="rect" coords="352,488,724,661" alt="Computer" href="Heavenly_black.html"> -->
-    <area shape="poly" coords="232,337,480,329,482,453,241,505" alt="Computer" href="Heavenly_black.html">
+    <area shape="poly" coords="273,339,563,331,565,460,284,514" alt="Computer" href="Heavenly_black.html">
    <!-- <area shape="rect" coords="726,477,1023,643" alt="Phone" href="Sally_black.html">
     <area shape="rect" coords="1028,475,1339,663" alt="Coffee" href="index.html"> -->
   </map>
