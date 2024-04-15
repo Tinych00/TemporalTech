@@ -3,14 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Animated Background
-</title>
+<title>Animated Background</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  img {
+    max-width: 100%; /* Set maximum width to 100% */
+    height: auto;
+    display: block;
+    border: none;
+  }
+
+  /* Improve accessibility by adding a border to image map areas */
+  area {
+    outline: 2px solid transparent;
+  }
+
+  /* Style the image map areas */
+  area:hover {
+    outline-color: red; /* Change the outline color on hover */
+  }
+</style>
 </head>
     
 <body>
 
  <!-- Image -->
-  <img src="assets/temoral.png" alt="Workplace" usemap="#workmap" width="1920" height="1080">
+  <img src="assets/temoral.png" alt="Workplace" usemap="#workmap">
 
   <!-- Image map -->
   <map name="workmap">
