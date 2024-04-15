@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Animated Background</title>
+
 <style>
   body {
     margin: 0;
@@ -13,8 +14,16 @@
   }
 
   img {
-    width: 100vw; /* 100% of viewport width */
-    height: 100vh; /* 100% of viewport height */
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
   }
 
   /* Improve accessibility by adding a border to image map areas */
@@ -28,7 +37,6 @@
   }
 </style>
 </head>
-    
 <body>
 
  <!-- Image -->
@@ -36,9 +44,7 @@
 
   <!-- Image map -->
   <map name="workmap">
-    <area shape="rect" coords="352,488,724,661" alt="Computer" href="Heavenly_black.html">
-    <area shape="rect" coords="726,477,1023,643" alt="Phone" href="Sally_black.html">
-    <area shape="rect" coords="1028,475,1339,663" alt="Coffee" href="index.html">
+    <area shape="poly" coords="352,488,722,476,724,661,366,738" alt="Computer" href="google.html">
   </map>
 
 </body>
