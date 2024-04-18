@@ -1,49 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Animated Background</title>
-<style>
-  body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden; /* Prevents horizontal scroll */
-    position: relative; /* Make sure the absolutely positioned elements are relative to the body */
-  }
+    <style>
+        .iframe-container {
+            position: relative;
+            width: 300px; /* Adjust width as needed */
+            height: 200px; /* Adjust height as needed */
+            perspective: 500px; /* Define perspective */
+        }
 
-  img {
-    width: 100%; /* 100% of viewport width */
-    height: 100%; /* 100% of viewport height */
-  }
+        .iframe-wrapper {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transform: rotateY(45deg); /* Apply rotation along the Y-axis */
+        }
 
-  /* Improve accessibility by adding a border to image map areas */
-  area {
-    outline: 2px solid transparent;
-  }
-
-  /* Style the image map areas */
-  area:hover {
-    outline-color: red; /* Change the outline color on hover */
-  }
-</style>
+        .iframe-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+            backface-visibility: hidden;
+        }
+    </style>
 </head>
 <body>
+    <div class="iframe-container">
+        <div class="iframe-wrapper">
+            <iframe src="https://tinych00.github.io/TiptoeSoleStore" title="Transform Example 1"></iframe>
+        </div>
+    </div>
 
- <!-- Image -->
-  <img src="assets/temoral.png" alt="Workplace" usemap="#workmap">
-
-  <!-- Image map -->
-  <map name="workmap">
-    <!-- Previous areas -->
-    <area shape="poly" coords="275,380,562,371,564,515,285,574" alt="Computer1" href="Heavenly_black.html">
-    <area shape="poly" coords="566,372,797,370,796,502,568,516" alt="Computer2" href="Heavenly_black.html">
-    <area shape="poly" coords="801,371,1048,372,1042,516,802,501" alt="Computer3" href="Heavenly_black.html">
-    <area shape="poly" coords="73,515,212,501,221,583,82,603" alt="Computer4" href="Heavenly_black.html">
-    <!-- Add the new iframe area -->
-    <area shape="poly" coords="140,121,181,116,204,160,204,222,191,270,140,329,85,355,58,352,37,322,40,259,103,161,128,147" alt="Iframe" href="https://tinych00.github.io/TiptoeSoleStore" target="_blank">
-  </map>
-
+    <!-- Image map -->
+    <map name="workmap">
+        <area shape="poly" coords="275,380,562,371,564,515,285,574" alt="Computer1" href="Heavenly_black.html">
+    </map>
 </body>
 </html>
- 
