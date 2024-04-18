@@ -8,8 +8,13 @@
   body {
     margin: 0;
     padding: 0;
-   
-  
+    overflow: hidden; /* Prevents horizontal scroll */
+    position: relative; /* Make sure the absolutely positioned elements are relative to the body */
+  }
+
+  img {
+    width: 100%; /* 100% of viewport width */
+    height: 100%; /* 100% of viewport height */
   }
 
   /* Improve accessibility by adding a border to image map areas */
@@ -21,24 +26,22 @@
   area:hover {
     outline-color: red; /* Change the outline color on hover */
   }
-  
-    
-    </style>
+</style>
 </head>
 <body>
-  
+
  <!-- Image -->
   <img src="assets/temoral.png" alt="Workplace" usemap="#workmap">
 
   <!-- Image map -->
   <map name="workmap">
-  <!--  <area shape="rect" coords="352,488,724,661" alt="Computer" href="Heavenly_black.html"> -->
-    <area shape="poly" coords="352,488,722,476,724,661,366,738" alt="Computer" href="Heavenly_black.html">
-   <!-- <area shape="rect" coords="726,477,1023,643" alt="Phone" href="Sally_black.html">
-    <area shape="rect" coords="1028,475,1339,663" alt="Coffee" href="index.html"> -->
+    <area shape="poly" coords="275,380,562,371,564,515,285,574" alt="Computer1" href="Heavenly_black.html">
+    <area shape="poly" coords="566,372,797,370,796,502,568,516" alt="Computer2" href="Heavenly_black.html">
+    <area shape="poly" coords="801,371,1048,372,1042,516,802,501" alt="Computer3" href="Heavenly_black.html">
+    <area shape="poly" coords="73,515,212,501,221,583,82,603" alt="Computer4" href="Heavenly_black.html">
+    <!-- Add iframe area -->
+    <area shape="poly" coords="140,121,181,116,204,160,204,222,191,270,140,329,85,355,58,352,37,322,40,259,103,161,128,147" alt="Iframe" href="https://tinych00.github.io/TiptoeSoleStore">
   </map>
 
-<!-- <area shape="poly" coords="140,121,181,116,204,160,204,222,191,270,140,329,85,355,58,352,37,322,40,259,103,161,128,147" */ -->
-  
 </body>
 </html>
