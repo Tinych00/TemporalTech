@@ -2,14 +2,9 @@
 <html>
 <head>
     <style>
-        /* Set the clip-path to define a custom polygon shape */
         .iframe-container {
             position: relative;
-            width: 300px; /* Adjust width as needed */
-            height: 200px; /* Adjust height as needed */
             perspective: 500px; /* Define perspective */
-            clip-path: polygon(275px 380px, 562px 371px, 564px 515px, 285px 574px); /* Define the polygon shape */
-            overflow: hidden; /* Ensure content stays within the polygon */
         }
 
         .iframe-wrapper {
@@ -28,12 +23,19 @@
             backface-visibility: hidden;
         }
 
+        /* Clip the iframe to the defined polygon coordinates */
+        .polygon-iframe {
+            clip-path: polygon(275px 380px, 562px 371px, 564px 515px, 285px 574px);
+            /* Ensure the container is large enough to contain the polygon */
+            width: 600px; /* Adjust width to encompass the entire polygon */
+            height: 600px; /* Adjust height to encompass the entire polygon */
+        }
     </style>
 </head>
 <body>
-    <div class="iframe-container">
+    <div class="iframe-container polygon-iframe">
         <div class="iframe-wrapper">
-            <iframe src="https://tinych00.github.io/TiptoeSoleStore" title="Transform Example 1"></iframe>
+            <iframe src="https://www.w3schools.com" title="Transform Example 1"></iframe>
         </div>
     </div>
 </body>
