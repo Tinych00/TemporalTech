@@ -2,45 +2,48 @@
 <html>
 <head>
     <style>
-        /* Set the body to 100% height to allow absolute positioning within it */
         body {
             position: relative;
-            height: 100vh; /* Full viewport height */
-            margin: 0; /* Remove default body margin */
-            overflow: hidden; /* Optional, to prevent scrollbars if you have more elements */
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
         }
 
-        /* Define the exact position for the iframe container */
         .iframe-container {
-            position: absolute; /* Allows you to position absolutely */
-            top: calc(10% + 40px); /* 10% of viewport height plus 40px padding */
-            left: calc(10% + 100px); /* 10% of viewport width plus 100px padding */
-            width: 300px; /* Maintain fixed width */
-            height: 200px; /* Maintain fixed height */
-            perspective: 500px; /* Define perspective */
+            position: absolute;
+            top: 200px;
+            left: 200px;
+            width: 300px;
+            height: 200px;
+            overflow: hidden;
+            background-color: lightgrey;
         }
 
-        .iframe-wrapper {
+        /* This is a basic clip path, which works for simple shapes but won't clip iframes */
+        svg {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            transform-style: preserve-3d;
-            transform: rotateY(45deg); /* Apply rotation along the Y-axis */
-        }
-
-        .iframe-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            display: block;
-            backface-visibility: hidden;
         }
     </style>
 </head>
 <body>
+    <!-- SVG with a clipping path -->
+    <svg>
+        <!-- Define a clipping path using polygon coordinates -->
+        <clipPath id="poly-clip">
+            <polygon points="275,380 562,371 564,515 285,574" />
+        </clipPath>
+
+        <!-- Use the clipping path to define a rectangle -->
+        <rect width="100%" height="100%" fill="blue" clip-path="url(#poly-clip)" />
+    </svg>
+
+    <!-- Basic iframe container. Clipping iframe within custom polygon isn't straightforward -->
     <div class="iframe-container">
-        <div class="iframe-wrapper">
-            <iframe src="https://tinych00.github.io/TiptoeSoleStore" title="Transform Example 1"></iframe>
-        </div>
+        <iframe src="https://tinych00.github.io/TiptoeSoleStore" title="Transform Example 1" style="width:100%; height:100%; border:none;"></iframe>
     </div>
 </body>
 </html>
