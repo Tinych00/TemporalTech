@@ -1,79 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Merged HTML Example</title>
-<style>
-  body {
-    position: relative;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-  }
+    <style>
+        /* Set the body to take the full viewport height */
+        body {
+            height: 100vh;
+            margin: 0;
+            display: flex; /* Use flexbox for scalability */
+            justify-content: center; /* Center elements horizontally */
+            align-items: center; /* Center elements vertically */
+            overflow: hidden; /* Prevent scrollbars if not needed */
+        }
 
-  /* Styles for the iframe container and its 3D transformation */
-  .iframe-container {
-    position: absolute;
-    top: 100px;
-    left: 200px;
-    width: 300px;
-    height: 200px;
-    perspective: 500px;
-  }
+        /* Position the iframe container relatively within the flexbox context */
+        .iframe-container {
+            perspective: 500px; /* Define perspective for 3D effects */
+        }
 
-  .iframe-wrapper {
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transform: rotateY(45deg);
-  }
+        /* The wrapper inside the container to apply transformations */
+        .iframe-wrapper {
+            width: 50vw; /* Use viewport width for responsive scaling */
+            height: 30vh; /* Use viewport height for responsive scaling */
+            transform-style: preserve-3d; /* Preserve 3D context */
+            transform: rotateY(45deg); /* Apply rotation along the Y-axis */
+        }
 
-  .iframe-container iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    display: block;
-    backface-visibility: hidden;
-  }
-
-  /* Styles for the animated background and image map */
-  img {
-    width: 100%; /* 100% of viewport width */
-    height: 100%; /* 100% of viewport height */
-  }
-
-  /* Accessibility improvements and hover effects for image map areas */
-  area {
-    outline: 2px solid transparent;
-  }
-
-  area:hover {
-    outline-color: red;
-  }
-
-</style>
+        /* Define iframe styles to fit within the wrapper */
+        .iframe-container iframe {
+            width: 100%; /* Take full width of the wrapper */
+            height: 100%; /* Take full height of the wrapper */
+            border: none; /* No border around the iframe */
+            display: block;
+            backface-visibility: hidden; /* Hide the backface when rotated */
+        }
+    </style>
 </head>
 <body>
-
-<!-- Iframe with 3D transformation -->
-<div class="iframe-container">
-    <div class="iframe-wrapper">
-        <iframe src="https://tinych00.github.io/TiptoeSoleStore" title="Transform Example 1"></iframe>
+    <div class="iframe-container">
+        <div class="iframe-wrapper">
+            <iframe src="https://tinych00.github.io/TiptoeSoleStore" title="Transform Example 1"></iframe>
+        </div>
     </div>
-</div>
-
-<!-- Image with Image Map -->
-<img src="assets/temoral.png" alt="Workplace" usemap="#workmap">
-
-<!-- Image map with links -->
-<map name="workmap">
-    <area shape="poly" coords="275,380,562,371,564,515,285,574" alt="Computer1" href="Heavenly_black.html">
-    <area shape="poly" coords="566,372,797,370,796,502,568,516" alt="Computer2" href="Heavenly_black.html">
-    <area shape="poly" coords="801,371,1048,372,1042,516,802,501" alt="Computer3" href="Heavenly_black.html">
-    <area shape="poly" coords="73,515,212,501,221,583,82,603" alt="Computer4" href="Heavenly_black.html">
-</map>
-
 </body>
 </html>
