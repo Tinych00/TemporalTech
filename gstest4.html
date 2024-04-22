@@ -1,37 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <style>
-        /* Set the body to take the full viewport height */
+        /* Set the body to 100% height to allow absolute positioning within it */
         body {
-            height: 100vh;
-            margin: 0;
-            display: flex; /* Use flexbox for scalability */
-            justify-content: center; /* Center elements horizontally */
-            align-items: center; /* Center elements vertically */
-            overflow: hidden; /* Prevent scrollbars if not needed */
+            position: relative;
+            height: 100vh; /* Full viewport height */
+            margin: 0; /* Remove default body margin */
+            overflow: hidden; /* Optional, to prevent scrollbars if you have more elements */
         }
 
-        /* Position the iframe container relatively within the flexbox context */
+        /* Define the exact position for the iframe container */
         .iframe-container {
-            perspective: 500px; /* Define perspective for 3D effects */
+            position: absolute; /* Allows you to position absolutely */
+            top: 10%; /* Adjust top position as needed */
+            left: 10%; /* Adjust left position as needed */
+            width: 80%; /* Adjust width as needed */
+            height: 80%; /* Adjust height as needed */
+            perspective: 500px; /* Define perspective */
         }
 
-        /* The wrapper inside the container to apply transformations */
         .iframe-wrapper {
-            width: 50vw; /* Use viewport width for responsive scaling */
-            height: 30vh; /* Use viewport height for responsive scaling */
-            transform-style: preserve-3d; /* Preserve 3D context */
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
             transform: rotateY(45deg); /* Apply rotation along the Y-axis */
         }
 
-        /* Define iframe styles to fit within the wrapper */
         .iframe-container iframe {
-            width: 100%; /* Take full width of the wrapper */
-            height: 100%; /* Take full height of the wrapper */
-            border: none; /* No border around the iframe */
+            width: 100%;
+            height: 100%;
+            border: none;
             display: block;
-            backface-visibility: hidden; /* Hide the backface when rotated */
+            backface-visibility: hidden;
         }
     </style>
 </head>
