@@ -2,36 +2,49 @@
 <html>
 <head>
     <style>
-        /* Set the body to 100% height for absolute positioning */
+        /* Set the body to 100% height to allow absolute positioning within it */
         body {
             position: relative;
-            height: 100vh;
+            height: 100vh; /* Full viewport height */
             margin: 0; /* Remove default body margin */
             overflow: hidden; /* Optional, to prevent scrollbars if you have more elements */
         }
 
-        /* Define the iframe container with absolute positioning */
+        /* Create a container that encompasses the polygon */
         .iframe-container {
             position: absolute; /* Allows you to position absolutely */
-            top: 275px; /* Start from the top-most point */
-            left: 285px; /* Start from the left-most point */
-            width: 300px; /* Adjustable width */
-            height: 300px; /* Adjustable height */
-            clip-path: polygon(275px 380px, 562px 371px, 564px 515px, 285px 574px); /* Define polygon path */
+            top: 275px; /* Top point from polygon */
+            left: 285px; /* Leftmost point from polygon */
+            width: 280px; /* Distance between leftmost and rightmost points */
+            height: 299px; /* Distance between top and bottom points */
+            background-color: rgba(0, 0, 0, 0.1); /* Optional: Transparent background for visual aid */
+            border: 1px solid black; /* Optional: Border for visual aid */
             perspective: 500px; /* Define perspective */
         }
 
+        /* The wrapper for applying transformations if needed */
+        .iframe-wrapper {
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transform: rotateY(0deg); /* No rotation, adjust if needed */
+        }
+
+        /* The iframe within the container */
         .iframe-container iframe {
             width: 100%;
             height: 100%;
-            border: none; /* No border for the iframe */
-            display: block; /* Ensures the iframe occupies full space */
+            border: none;
+            display: block;
+            backface-visibility: hidden;
         }
     </style>
 </head>
 <body>
     <div class="iframe-container">
-        <iframe src="https://tinych00.github.io/TiptoeSoleStore" title="Custom Polygon Iframe"></iframe>
+        <div class="iframe-wrapper">
+            <iframe src="https://tinych00.github.io/TiptoeSoleStore" title="Example Iframe"></iframe>
+        </div>
     </div>
 </body>
 </html>
