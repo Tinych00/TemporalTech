@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Animated Background</title>
+<title>Scalable Image Map</title>
 <style>
   body {
     margin: 0;
@@ -14,7 +14,7 @@
 
   img {
     width: 100%; /* 100% of viewport width */
-    height: 100%; /* 100% of viewport height */
+    height: auto; /* Maintain aspect ratio */
   }
 
   /* Improve accessibility by adding a border to image map areas */
@@ -26,25 +26,49 @@
   area:hover {
     outline-color: red; /* Change the outline color on hover */
   }
-  
-    
-    </style>
+</style>
 </head>
 <body>
-    
 
- <!-- Image -->
-  <img src="assets/temoral.png" alt="Workplace" usemap="#workmap">
+<!-- Image -->
+<img id="image" src="assets/temporal.png" alt="Workplace" usemap="#workmap">
 
-  <!-- Image map -->
-  <map name="workmap">
-  <!--  <area shape="rect" coords="352,488,724,661" alt="Computer" href="Heavenly_black.html"> -->
-    <area shape="poly" coords="275,380,565,371,567,515,286,574" alt="Computer" href="Heavenly_black.html">
-   <!-- <area shape="rect" coords="726,477,1023,643" alt="Phone" href="Sally_black.html">
-    <area shape="rect" coords="1028,475,1339,663" alt="Coffee" href="index.html"> -->
-  </map>
+<!-- Image map -->
+<map name="workmap" id="workmap">
+  <area shape="poly" coords="275,380,562,371,564,515,285,574" alt="Computer1" href="Heavenly_black.html">
+  <area shape="poly" coords="566,372,797,370,796,502,568,516" alt="Computer2" href="Heavenly_black.html">
+  <area shape="poly" coords="801,371,1048,372,1042,516,802,501" alt="Computer3" href="Heavenly_black.html">
+  <area shape="poly" coords="73,515,212,501,221,583,82,603" alt="Computer4" href="Heavenly_black.html">
+</map>
 
-<!-- <area shape="poly" coords="140,121,181,116,204,160,204,222,191,270,140,329,85,355,58,352,37,322,40,259,103,161,128,147" */ -->
-  
+<!-- JavaScript to scale the image map -->
+<script>
+  function resizeMap() {
+    var img = document.getElementById("image");
+    var map = document.getElementById("workmap");
+    var originalWidth = 1200; // Change to the original width of the image
+    var originalHeight = 800; // Change to the original height of the image
+
+    var scaleX = img.clientWidth / originalWidth;
+    var scaleY = img.clientHeight / originalHeight;
+
+    var areas = map.getElementsByTagName("area");
+    for (var i = 0; i < areas.length; i++) {
+      var coords = areas[i].getAttribute("coords").split(",");
+      for (var j = 0; j < coords.length; j++) {
+        if (j % 2 === 0) {
+          coords[j] = Math.round(parseInt(coords[j], 10) * scaleX);
+        } else {
+          coords[j] = Math.round(parseInt(coords[j], 10) * scaleY);
+        }
+      }
+      areas[i].setAttribute("coords", coords.join(","));
+    }
+  }
+
+  window.addEventListener("resize", resizeMap);
+  window.addEventListener("load", resizeMap);
+</script>
+
 </body>
 </html>
