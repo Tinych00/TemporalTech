@@ -1,47 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Animated Background</title>
-<style>
-  body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden; /* Prevents horizontal scroll */
-    position: relative; /* Make sure the absolutely positioned elements are relative to the body */
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scalable Image Map</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      position: relative;
+    }
 
-  img {
-    width: 100%; /* 100% of viewport width */
-    height: 100%; /* 100% of viewport height */
-  }
+    img {
+      width: 100%;
+      height: auto;
+    }
 
-  /* Improve accessibility by adding a border to image map areas */
-  area {
-    outline: 2px solid transparent;
-  }
+    area {
+      outline: 2px solid transparent;
+    }
 
-  /* Style the image map areas */
-  area:hover {
-    outline-color: red; /* Change the outline color on hover */
-  }
-</style>
+    area:hover {
+      outline-color: red;
+    }
+  </style>
 </head>
 <body>
-    
+  <img src="assets/temoral.png" alt="Workplace" id="workplace" usemap="#workmap">
 
- <!-- Image -->
-  <img src="assets/temoral.png" alt="Workplace" usemap="#workmap">
-
-  <!-- Image map -->
-  <map name="workmap">
-    <area shape="poly" coords="19%,43%,39%,42%,39%,58%,21%,60%" alt="Computer1" href="Heavenly_black.html">
-    <area shape="poly" coords="40%,43%,58%,42%,58%,57%,40%,58%" alt="Computer2" href="Heavenly_black.html">
-    <area shape="poly" coords="60%,43%,79%,43%,79%,57%,60%,57%" alt="Computer3" href="Heavenly_black.html">
-    <area shape="poly" coords="4%,58%,12%,57%,13%,66%,5%,69%" alt="Computer4" href="Heavenly_black.html">
+  <map name="workmap" id="workmap">
+    <area shape="poly" coords="275,380,562,371,564,515,285,574" alt="Computer1" href="Heavenly_black.html">
+    <area shape="poly" coords="566,372,797,370,796,502,568,516" alt="Computer2" href="Heavenly_black.html">
+    <area shape="poly" coords="801,371,1048,372,1042,516,802,501" alt="Computer3" href="Heavenly_black.html">
+    <area shape="poly" coords="73,515,212,501,221,583,82,603" alt="Computer4" href="Heavenly_black.html">
   </map>
 
-  
+  <script>
+    // Function to scale coordinates based on image size
+    function scaleCoordinates(coords, imgWidth, imgHeight, mapWidth, mapHeight) {
+      return coords.map((coord, index) => {
+        if (index % 2 === 0) {
+          // Even index - x coordinate
+          return (coord / mapWidth) * imgWidth;
+        } else {
+          // Odd index - y coordinate
+          return (coord / mapHeight) * imgHeight;
+        }
+      });
+    }
+
+    // Function to update the map coordinates
+    function updateMap() {
+      const image = document.getElementById('workplace');
+      const map = document.getElementById('workmap');
+
+      const originalWidth = 1200; // Original image width
+      const originalHeight = 800; // Original image height
+
+      const imgWidth = image.clientWidth;
+      const imgHeight = image.clientHeight;
+
+      map.querySelectorAll('area').forEach(area => {
+        const originalCoords = area.getAttribute('coords').split(',').map(Number);
+        const scaledCoords = scaleCoordinates(originalCoords, imgWidth, imgHeight, originalWidth, originalHeight);
+        area.setAttribute('coords', scaledCoords.join(','));
+      });
+    }
+
+    // Update the map coordinates when the window resizes
+    window.addEventListener('resize', updateMap);
+
+    // Initial update when the image is loaded
+    window.addEventListener('load', updateMap);
+  </script>
 </body>
 </html>
