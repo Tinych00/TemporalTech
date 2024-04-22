@@ -2,42 +2,36 @@
 <html>
 <head>
     <style>
-        /* Set the body to 100% height to allow absolute positioning within it */
+        /* Set the body to 100% height for absolute positioning */
         body {
             position: relative;
-            height: 100vh; /* Full viewport height */
+            height: 100vh;
             margin: 0; /* Remove default body margin */
             overflow: hidden; /* Optional, to prevent scrollbars if you have more elements */
         }
 
-        /* Define the exact position for the iframe container */
+        /* Define the iframe container with absolute positioning */
         .iframe-container {
             position: absolute; /* Allows you to position absolutely */
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            clip-path: polygon(275px 380px, 562px 371px, 564px 515px, 285px 574px);
-        }
-
-        .iframe-wrapper {
-            width: 100%;
-            height: 100%;
+            top: 275px; /* Start from the top-most point */
+            left: 285px; /* Start from the left-most point */
+            width: 300px; /* Adjustable width */
+            height: 300px; /* Adjustable height */
+            clip-path: polygon(275px 380px, 562px 371px, 564px 515px, 285px 574px); /* Define polygon path */
+            perspective: 500px; /* Define perspective */
         }
 
         .iframe-container iframe {
             width: 100%;
             height: 100%;
-            border: none;
-            display: block;
+            border: none; /* No border for the iframe */
+            display: block; /* Ensures the iframe occupies full space */
         }
     </style>
 </head>
 <body>
     <div class="iframe-container">
-        <div class="iframe-wrapper">
-            <iframe src="https://google.com" title="Iframe"></iframe>
-        </div>
+        <iframe src="https://tinych00.github.io/TiptoeSoleStore" title="Custom Polygon Iframe"></iframe>
     </div>
 </body>
 </html>
