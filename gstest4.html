@@ -1,78 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scalable Image Map</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      position: relative;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merged HTML Example</title>
+<style>
+  body {
+    position: relative;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
 
-    img {
-      width: 100%;
-      height: auto;
-    }
+  /* Styles for the iframe container and its 3D transformation */
+  .iframe-container {
+    position: absolute;
+    top: 100px;
+    left: 200px;
+    width: 300px;
+    height: 200px;
+    perspective: 500px;
+  }
 
-    area {
-      outline: 2px solid transparent;
-    }
+  .iframe-wrapper {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transform: rotateY(45deg);
+  }
 
-    area:hover {
-      outline-color: red;
-    }
-  </style>
+  .iframe-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+    backface-visibility: hidden;
+  }
+
+  /* Styles for the animated background and image map */
+  img {
+    width: 100%; /* 100% of viewport width */
+    height: 100%; /* 100% of viewport height */
+  }
+
+  /* Accessibility improvements and hover effects for image map areas */
+  area {
+    outline: 2px solid transparent;
+  }
+
+  area:hover {
+    outline-color: red;
+  }
+
+</style>
 </head>
 <body>
-  <img src="assets/temoral.png" alt="Workplace" id="workplace" usemap="#workmap">
 
-  <map name="workmap" id="workmap">
+<!-- Iframe with 3D transformation -->
+<div class="iframe-container">
+    <div class="iframe-wrapper">
+        <iframe src="https://tinych00.github.io/TiptoeSoleStore" title="Transform Example 1"></iframe>
+    </div>
+</div>
+
+<!-- Image with Image Map -->
+<img src="assets/temoral.png" alt="Workplace" usemap="#workmap">
+
+<!-- Image map with links -->
+<map name="workmap">
     <area shape="poly" coords="275,380,562,371,564,515,285,574" alt="Computer1" href="Heavenly_black.html">
     <area shape="poly" coords="566,372,797,370,796,502,568,516" alt="Computer2" href="Heavenly_black.html">
     <area shape="poly" coords="801,371,1048,372,1042,516,802,501" alt="Computer3" href="Heavenly_black.html">
     <area shape="poly" coords="73,515,212,501,221,583,82,603" alt="Computer4" href="Heavenly_black.html">
-  </map>
+</map>
 
-  <script>
-    // Function to scale coordinates based on image size
-    function scaleCoordinates(coords, imgWidth, imgHeight, mapWidth, mapHeight) {
-      return coords.map((coord, index) => {
-        if (index % 2 === 0) {
-          // Even index - x coordinate
-          return (coord / mapWidth) * imgWidth;
-        } else {
-          // Odd index - y coordinate
-          return (coord / mapHeight) * imgHeight;
-        }
-      });
-    }
-
-    // Function to update the map coordinates
-    function updateMap() {
-      const image = document.getElementById('workplace');
-      const map = document.getElementById('workmap');
-
-      const originalWidth = 1200; // Original image width
-      const originalHeight = 800; // Original image height
-
-      const imgWidth = image.clientWidth;
-      const imgHeight = image.clientHeight;
-
-      map.querySelectorAll('area').forEach(area => {
-        const originalCoords = area.getAttribute('coords').split(',').map(Number);
-        const scaledCoords = scaleCoordinates(originalCoords, imgWidth, imgHeight, originalWidth, originalHeight);
-        area.setAttribute('coords', scaledCoords.join(','));
-      });
-    }
-
-    // Update the map coordinates when the window resizes
-    window.addEventListener('resize', updateMap);
-
-    // Initial update when the image is loaded
-    window.addEventListener('load', updateMap);
-  </script>
 </body>
 </html>
