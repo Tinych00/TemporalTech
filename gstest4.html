@@ -2,37 +2,47 @@
 <html>
 <head>
     <style>
-        .iframe-container {
+        /* Set the body to 100% height to allow absolute positioning within it */
+        body {
             position: relative;
-            width: 100%; /* Expand the container to 100% */
-            height: 100%; /* Expand the height to 100% */
-            overflow: hidden; /* Hide any overflow */
+            height: 100vh; /* Full viewport height */
+            margin: 0; /* Remove default body margin */
+            overflow: hidden; /* Optional, to prevent scrollbars if you have more elements */
         }
 
+        /* Create an iframe container with a clip-path based on the specified polygon coordinates */
+        .iframe-container {
+            position: absolute; /* Allows absolute positioning */
+            clip-path: polygon(275px 380px, 562px 371px, 564px 515px, 285px 574px); /* Clip-path based on polygon coordinates */
+            width: 600px; /* Adjust to a suitable width to contain the polygon */
+            height: 600px; /* Adjust to a suitable height to contain the polygon */
+        }
+
+        /* Wrapper to add 3D transform and perspective */
         .iframe-wrapper {
-            position: absolute;
-            clip-path: polygon(275px 380px, 562px 371px, 564px 515px, 285px 574px); /* Create the polygon using coordinates */
-            width: 100%; /* Full width for proper clipping */
-            height: 100%; /* Full height for proper clipping */
-            transform-style: preserve-3d;
-            transform: rotateY(45deg); /* Optional rotation */
-        }
-
-        .iframe-wrapper iframe {
-            position: absolute; /* Allows correct positioning within the container */
-            top: 0;
-            left: 0;
+            position: relative;
             width: 100%;
             height: 100%;
-            border: none; /* No border on the iframe */
+            transform-style: preserve-3d;
+            transform: rotateY(45deg); /* Apply rotation along the Y-axis */
+        }
+
+        /* Style for the iframe */
+        .iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
             backface-visibility: hidden;
         }
     </style>
 </head>
 <body>
+    <!-- Container with the polygon clip-path -->
     <div class="iframe-container">
+        <!-- Wrapper to apply 3D transformation -->
         <div class="iframe-wrapper">
-            <iframe src="https://tinych00.github.io/TiptoeSoleStore" title="Example Store"></iframe>
+            <iframe class="iframe" src="https://tinych00.github.io/TiptoeSoleStore" title="Iframe with 3D Rotation"></iframe>
         </div>
     </div>
 </body>
