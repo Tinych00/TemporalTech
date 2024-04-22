@@ -2,26 +2,37 @@
 <html>
 <head>
     <style>
-        /* Define the shape of the polygon using clip-path */
-        .clip-container {
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Optional, to prevent scrollbars if you have more elements */
+        }
+
+        .iframe-container {
             position: relative;
             width: 600px; /* Adjust as needed */
             height: 600px; /* Adjust as needed */
         }
 
-        /* Apply the clip-path to contain the iframe within the polygon shape */
-        .polygon-iframe {
+        .iframe-wrapper {
             position: absolute;
-            clip-path: polygon(275px 380px, 562px 371px, 564px 515px, 285px 574px); /* Define the clipping polygon */
-            width: 100%; /* Let the content fit within the clip-path */
-            height: 100%; /* Let the content fit within the clip-path */
+            width: 100%;
+            height: 100%;
+            clip-path: polygon(275px 380px, 562px 371px, 564px 515px, 285px 574px); /* Define the polygon clip-path */
+        }
+
+        .iframe-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
         }
     </style>
 </head>
 <body>
-    <div class="clip-container">
-        <div class="polygon-iframe">
-            <iframe src="https://tinych00.github.io/TiptoeSoleStore" title="Transform Example 1"></iframe>
+    <div class="iframe-container">
+        <div class="iframe-wrapper">
+            <iframe src="https://tinych00.github.io/TiptoeSoleStore" title="Polygon Clip Iframe"></iframe>
         </div>
     </div>
 </body>
