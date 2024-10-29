@@ -9,15 +9,15 @@
             padding: 0;
         }
 
-        /* Full-page background image */
-        .background-image {
-            position: absolute;
+        /* Full-page background image with fixed pixel dimensions */
+        .full-page-image {
+            position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
+            width: 1920px; /* Example width */
+            height: 1080px; /* Example height */
             object-fit: cover;
-            z-index: -1; /* Place it behind other elements */
+            z-index: -1; /* Set behind other elements */
         }
 
         /* Initial style for the iframe container */
@@ -28,7 +28,7 @@
             perspective: 500px;
             transition: transform 0.5s ease, width 0.5s ease, height 0.5s ease;
             margin: 0 auto;
-            z-index: 1; /* Keep it above the background */
+            z-index: 1;
         }
 
         /* 3D rotation effect for the rhombus shape */
@@ -38,7 +38,7 @@
             height: 100%;
             transform-style: preserve-3d;
             transform: rotateY(45deg); /* Tilt to create a rhombus */
-            transition: transform 0.5s ease; /* Smooth transition */
+            transition: transform 0.5s ease;
         }
 
         /* Style for the iframe */
@@ -52,8 +52,8 @@
 
         /* Hover effect to transform rhombus to rectangle and resize */
         .iframe-container:hover {
-            width: 70vw;
-            height: 70vh;
+            width: 1400px; /* Adjusted size on hover */
+            height: 900px; /* Adjusted size on hover */
         }
 
         /* Remove rotation on hover to make it a rectangle */
@@ -70,8 +70,8 @@
 </head>
 <body>
 
-    <!-- Full-page background image -->
-    <img src="assets/te-ezgif.com-avif-to-jpg-converter.jpg" alt="Background" class="background-image">
+    <!-- Full-page background image with pixel dimensions -->
+    <img src="assets/te-ezgif.com-avif-to-jpg-converter.jpg" class="full-page-image" alt="Full Page Background">
 
     <!-- Iframe container with hover transform effect and image map functionality -->
     <div class="iframe-container" id="iframeContainer">
