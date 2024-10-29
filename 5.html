@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Full-page background image with fixed dimensions */
+        .full-page-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 1920px; /* Match the background image dimensions */
+            height: 1080px;
+            object-fit: cover;
+            z-index: -1; /* Place behind other elements */
+        }
+
+        /* Iframe container */
+        .iframe-container {
+            position: absolute;
+            top: 260px; /* Position the iframe to match black square */
+            left: 500px;
+            width: 910px; /* Match the width and height of black square */
+            height: 510px;
+            transition: transform 0.5s ease;
+            z-index: 1;
+        }
+
+        /* Style for the iframe */
+        .iframe-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+            border-radius: 8px; /* Add rounded corners if needed */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Full-page background image -->
+    <img src="assets/te-ezgif.com-avif-to-jpg-converter.jpg" class="full-page-image" alt="Full Page Background">
+
+    <!-- Iframe container placed over black square area -->
+    <div class="iframe-container" id="iframeContainer">
+        <iframe src="https://tinych00.github.io/TiptoeSoleStore" title="TipToe Soles Store"></iframe>
+    </div>
+
+</body>
+</html>
