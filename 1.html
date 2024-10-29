@@ -1,73 +1,94 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saleable Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        /* Basic styling for demonstration */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
+        * {
+            box-sizing: border-box;
         }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-            text-align: center;
+
+        /* Initial style for the iframe container */
+        .iframe-container {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            perspective: 500px;
+            transition: transform 0.5s ease, width 0.5s ease, height 0.5s ease;
+            margin: 0 auto;
         }
-        nav {
-            background-color: #444;
-            color: #fff;
-            padding: 10px;
+
+        /* 3D rotation effect for the rhombus shape */
+        .iframe-wrapper {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transform: rotateY(45deg); /* Tilt to create a rhombus */
+            transition: transform 0.5s ease; /* Smooth transition */
         }
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
+
+        /* Style for the iframe */
+        .iframe-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+            backface-visibility: hidden;
         }
-        nav ul li {
-            display: inline;
-            margin-right: 10px;
+
+        /* Hover effect to transform rhombus to rectangle and resize */
+        .iframe-container:hover {
+            width: 70vw;
+            height: 70vh;
         }
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
+
+        /* Remove rotation on hover to make it a rectangle */
+        .iframe-container:hover .iframe-wrapper {
+            transform: rotateY(0deg);
         }
-        section {
-            padding: 20px;
+
+        /* Glow effect on image map area */
+        area:hover {
+            outline: 3px solid rgba(255, 255, 0, 0.8);
+            outline-offset: 2px;
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Saleable Website</h1>
-</header>
+<br>
+<br>
 
-<nav>
-    <ul>
-        <li><a href="#section1">Section 1</a></li>
-        <li><a href="#section2">Section 2</a></li>
-        <li><a href="#section3">Section 3</a></li>
-    </ul>
-</nav>
 
-<section id="section1">
-    <h2>Section 1</h2>
-    <p>This is the content of section 1.</p>
-</section>
+  
+    <!-- Iframe container with hover transform effect and image map functionality -->
+    <div class="iframe-container" id="iframeContainer">
+        <div class="iframe-wrapper">
+            <iframe src="https://tinych00.github.io/TiptoeSoleStore" title="Transform Example"></iframe>
+        </div>
+    </div>
 
-<section id="section2">
-    <h2>Section 2</h2>
-    <p>This is the content of section 2.</p>
-</section>
+    <!-- Image map with clickable area -->
+    <map name="workmap">
+        <area shape="poly" coords="275,380,562,371,564,515,285,574" alt="Computer1" href="javascript:void(0)" onclick="zoomIn()" onmouseout="zoomOut()">
+    </map>
 
-<section id="section3">
-    <h2>Section 3</h2>
-    <p>This is the content of section 3.</p>
-</section>
+    <script>
+        const iframeContainer = document.getElementById("iframeContainer");
 
+        // Zoom in and reshape when the area is clicked
+        function zoomIn() {
+            iframeContainer.classList.add("zoomed-in");
+            document.body.addEventListener("click", resetZoom, true);
+        }
+
+        // Reset the zoom and position when clicked outside
+        function resetZoom(event) {
+            if (!iframeContainer.contains(event.target)) {
+                iframeContainer.classList.remove("zoomed-in");
+                document.body.removeEventListener("click", resetZoom, true);
+            }
+        }
+    </script>
 </body>
 </html>
