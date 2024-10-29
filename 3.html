@@ -9,13 +9,13 @@
             padding: 0;
         }
 
-        /* Full-page background image */
+        /* Full-page background image with fixed pixel dimensions */
         .full-page-image {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
+            width: 1920px; /* Example width */
+            height: 1080px; /* Example height */
             object-fit: cover;
             z-index: -1; /* Set behind other elements */
         }
@@ -52,8 +52,8 @@
 
         /* Hover effect to transform rhombus to rectangle and resize */
         .iframe-container:hover {
-            width: 70vw;
-            height: 70vh;
+            width: 1400px; /* Adjusted size on hover */
+            height: 900px; /* Adjusted size on hover */
         }
 
         /* Remove rotation on hover to make it a rectangle */
@@ -70,8 +70,8 @@
 </head>
 <body>
 
-    <!-- Full-page background image -->
-    <img src="assets/te-ezgif.com-avif-to-jpg-converter.jpg" class="full-page-image" alt="Full Page Background">
+    <!-- Full-page background image with pixel dimensions -->
+    <img src="assets/Vmake-1730197611.jpg" class="full-page-image" alt="Full Page Background">
 
     <!-- Iframe container with hover transform effect and image map functionality -->
     <div class="iframe-container" id="iframeContainer">
