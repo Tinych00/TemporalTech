@@ -1,1 +1,106 @@
-.
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Full-page background image */
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -1; /* Place it behind other elements */
+        }
+
+        /* Initial style for the iframe container */
+        .iframe-container {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            perspective: 500px;
+            transition: transform 0.5s ease, width 0.5s ease, height 0.5s ease;
+            margin: 0 auto;
+            z-index: 1; /* Keep it above the background */
+        }
+
+        /* 3D rotation effect for the rhombus shape */
+        .iframe-wrapper {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transform: rotateY(45deg); /* Tilt to create a rhombus */
+            transition: transform 0.5s ease; /* Smooth transition */
+        }
+
+        /* Style for the iframe */
+        .iframe-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+            backface-visibility: hidden;
+        }
+
+        /* Hover effect to transform rhombus to rectangle and resize */
+        .iframe-container:hover {
+            width: 70vw;
+            height: 70vh;
+        }
+
+        /* Remove rotation on hover to make it a rectangle */
+        .iframe-container:hover .iframe-wrapper {
+            transform: rotateY(0deg);
+        }
+
+        /* Glow effect on image map area */
+        area:hover {
+            outline: 3px solid rgba(255, 255, 0, 0.8);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Full-page background image -->
+    <img src="assets/te-ezgif.com-avif-to-jpg-converter.jpg" alt="Background" class="background-image">
+
+    <!-- Iframe container with hover transform effect and image map functionality -->
+    <div class="iframe-container" id="iframeContainer">
+        <div class="iframe-wrapper">
+            <iframe src="https://tinych00.github.io/TiptoeSoleStore" title="Transform Example"></iframe>
+        </div>
+    </div>
+
+    <!-- Image map with clickable area -->
+    <map name="workmap">
+        <area shape="poly" coords="275,380,562,371,564,515,285,574" alt="Computer1" href="javascript:void(0)" onclick="zoomIn()" onmouseout="zoomOut()">
+    </map>
+
+    <script>
+        const iframeContainer = document.getElementById("iframeContainer");
+
+        // Zoom in and reshape when the area is clicked
+        function zoomIn() {
+            iframeContainer.classList.add("zoomed-in");
+            document.body.addEventListener("click", resetZoom, true);
+        }
+
+        // Reset the zoom and position when clicked outside
+        function resetZoom(event) {
+            if (!iframeContainer.contains(event.target)) {
+                iframeContainer.classList.remove("zoomed-in");
+                document.body.removeEventListener("click", resetZoom, true);
+            }
+        }
+    </script>
+</body>
+</html>
