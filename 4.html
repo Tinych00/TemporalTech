@@ -9,25 +9,26 @@
             padding: 0;
         }
 
-        /* Full-page background image with fixed pixel dimensions */
+        /* Full-page background image with fixed dimensions */
         .full-page-image {
             position: fixed;
             top: 0;
             left: 0;
-            width: 1920px; /* Example width */
-            height: 1080px; /* Example height */
+            width: 1920px; /* Match the background image dimensions */
+            height: 1080px;
             object-fit: cover;
-            z-index: -1; /* Set behind other elements */
+            z-index: -1; /* Place behind other elements */
         }
 
-        /* Initial style for the iframe container */
+        /* Iframe container positioned over black square area */
         .iframe-container {
-            position: relative;
-            width: 300px;
-            height: 200px;
+            position: absolute;
+            top: 260px; /* Position the iframe to match black square */
+            left: 500px;
+            width: 910px; /* Match the width and height of black square */
+            height: 510px;
             perspective: 500px;
             transition: transform 0.5s ease, width 0.5s ease, height 0.5s ease;
-            margin: 0 auto;
             z-index: 1;
         }
 
@@ -47,6 +48,7 @@
             height: 100%;
             border: none;
             display: block;
+            border-radius: 8px; /* Add rounded corners if needed */
             backface-visibility: hidden;
         }
 
@@ -70,13 +72,13 @@
 </head>
 <body>
 
-    <!-- Full-page background image with pixel dimensions -->
-    <img src="assets/Vmake-1730197611.jpg" class="full-page-image" alt="Full Page Background">
+    <!-- Full-page background image -->
+    <img src="assets/te-ezgif.com-avif-to-jpg-converter.jpg" class="full-page-image" alt="Full Page Background">
 
-    <!-- Iframe container with hover transform effect and image map functionality -->
+    <!-- Iframe container placed over black square area with hover transform effect -->
     <div class="iframe-container" id="iframeContainer">
         <div class="iframe-wrapper">
-            <iframe src="https://tinych00.github.io/TiptoeSoleStore" title="Transform Example"></iframe>
+            <iframe src="https://tinych00.github.io/TiptoeSoleStore" title="TipToe Soles Store"></iframe>
         </div>
     </div>
 
@@ -97,10 +99,4 @@
         // Reset the zoom and position when clicked outside
         function resetZoom(event) {
             if (!iframeContainer.contains(event.target)) {
-                iframeContainer.classList.remove("zoomed-in");
-                document.body.removeEventListener("click", resetZoom, true);
-            }
-        }
-    </script>
-</body>
-</html>
+                iframeCon
