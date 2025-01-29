@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendar</title>
     <style>
-      *, *:before, *:after {
+    *, *:before, *:after {
 -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
 }
 
@@ -359,13 +359,44 @@ body {
 @keyframes moveFromBottomFadeMonth {
   from { opacity: 0; -webkit-transform: translateY(-30%); }
 }
+
+@-webkit-keyframes fadeIn  {
+  from { opacity: 0; }
+}
+@-moz-keyframes fadeIn  {
+  from { opacity: 0; }
+}
+@keyframes fadeIn  {
+  from { opacity: 0; }
+}
+
+@-webkit-keyframes fadeOut  {
+  to { opacity: 0; }
+}
+@-moz-keyframes fadeOut  {
+  to { opacity: 0; }
+}
+@keyframes fadeOut  {
+  to { opacity: 0; }
+}
+
+@-webkit-keyframes fadeOutShink  {
+  to { opacity: 0; padding: 0px; height: 0px; }
+}
+@-moz-keyframes fadeOutShink  {
+  to { opacity: 0; padding: 0px; height: 0px; }
+}
+@keyframes fadeOutShink  {
+  to { opacity: 0; padding: 0px; height: 0px; }
+}
+
     </style>
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
 </head>
 <body>
     <div id="calendar"></div>
     <script>
-      !function() {
+     !function() {
 
   var today = moment();
 
@@ -382,8 +413,6 @@ body {
       }, 500);
     }
   }
-
-        
 
   Calendar.prototype.draw = function() {
     //Create Header
@@ -720,6 +749,7 @@ body {
   var calendar = new Calendar('#calendar', data);
 
 }();
+
     </script>
 </body>
 </html>
