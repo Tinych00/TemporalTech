@@ -8,6 +8,16 @@
     <script defer src="script.js"></script>
 </head>
 <body>
+    <nav class="navbar">
+        <h1>Hacker Hub</h1>
+        <ul>
+            <li><a href="#notes">Notes</a></li>
+            <li><a href="#links">Useful Links</a></li>
+            <li><a href="#games">Games</a></li>
+            <li><a href="#important" id="open-important">Important</a></li>
+        </ul>
+    </nav>
+    
     <div class="sidebar">
         <h2>Menu</h2>
         <ul>
@@ -57,16 +67,42 @@
 
     <style>
         body {
-            background-color: #121212;
+            background-color: #0d0d0d;
             color: #00ffcc;
-            font-family: Arial, sans-serif;
+            font-family: 'Courier New', monospace;
+            text-shadow: 0 0 5px #00ffcc;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #111;
+            padding: 10px 20px;
+            box-shadow: 0 0 10px #00ffcc;
+        }
+        .navbar h1 {
+            color: #00ffcc;
+        }
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        .navbar a {
+            color: #00ffcc;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .navbar a:hover {
+            color: #ff00ff;
         }
         .sidebar {
             width: 200px;
             position: fixed;
             height: 100%;
-            background-color: #222;
+            background-color: #111;
             padding: 20px;
+            box-shadow: 0 0 10px #00ffcc;
         }
         .content {
             margin-left: 220px;
@@ -75,10 +111,11 @@
         textarea {
             width: 100%;
             height: 150px;
-            background-color: #333;
-            color: #fff;
+            background-color: #222;
+            color: #00ffcc;
             border: none;
             padding: 10px;
+            font-family: 'Courier New', monospace;
         }
         .modal {
             display: none;
@@ -87,14 +124,15 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.9);
         }
         .modal-content {
-            background: #333;
+            background: #111;
             padding: 20px;
             margin: 20% auto;
             width: 300px;
             text-align: center;
+            box-shadow: 0 0 10px #00ffcc;
         }
     </style>
 
