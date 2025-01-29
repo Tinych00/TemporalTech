@@ -19,26 +19,26 @@
         </ul>
     </nav>
     
-    <div class="content">
-        <section id="notes" class="section-box">
+    <div class="widget-container">
+        <div class="widget" id="notes">
             <h2>> Notes</h2>
             <textarea id="notesArea" placeholder="Write your notes here..."></textarea>
-        </section>
+        </div>
 
-        <section id="links" class="section-box">
+        <div class="widget" id="links">
             <h2>> Useful Links</h2>
             <ul>
                 <li><a href="https://google.com" target="_blank">Google</a></li>
                 <li><a href="https://github.com" target="_blank">GitHub</a></li>
             </ul>
-        </section>
+        </div>
 
-        <section id="games" class="section-box">
+        <div class="widget" id="games">
             <h2>> Mini Games</h2>
-            <iframe src="https://play2048.co/" width="300" height="400"></iframe>
-            <iframe src="https://cdn.jsdelivr.net/gh/chvin/react-pong@gh-pages/index.html" width="300" height="400"></iframe>
-            <iframe src="https://chromedino.com/" width="300" height="400"></iframe>
-        </section>
+            <iframe src="https://play2048.co/" width="100%" height="250"></iframe>
+            <iframe src="https://cdn.jsdelivr.net/gh/chvin/react-pong@gh-pages/index.html" width="100%" height="250"></iframe>
+            <iframe src="https://chromedino.com/" width="100%" height="250"></iframe>
+        </div>
     </div>
 
     <div id="important-modal" class="modal">
@@ -57,20 +57,9 @@
             font-family: 'Courier New', monospace;
             text-shadow: 0 0 5px #00ff00;
             overflow: hidden;
-        }
-        .terminal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(
-                rgba(0, 255, 0, 0.1),
-                rgba(0, 255, 0, 0.1) 1px,
-                transparent 2px,
-                transparent 3px
-            );
-            z-index: -1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .navbar {
             display: flex;
@@ -78,6 +67,7 @@
             align-items: center;
             background-color: #111;
             padding: 15px 20px;
+            width: 100%;
             box-shadow: 0 0 10px #00ff00;
         }
         .navbar h1 {
@@ -96,20 +86,23 @@
         .navbar a:hover {
             color: #ff0000;
         }
-        .content {
+        .widget-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 10px;
             padding: 20px;
             justify-content: center;
+            max-width: 100vw;
         }
-        .section-box {
+        .widget {
             background: rgba(0, 255, 0, 0.1);
             border: 1px solid #00ff00;
             padding: 15px;
             box-shadow: 0 0 10px #00ff00;
-            width: 300px;
+            width: 90%;
+            max-width: 400px;
             text-align: center;
+            border-radius: 10px;
         }
         textarea {
             width: 100%;
