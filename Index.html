@@ -3,47 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neon Dark Personal Site</title>
+    <title>Hacker Hub</title>
     <link rel="stylesheet" href="styles.css">
     <script defer src="script.js"></script>
 </head>
 <body>
+    <div class="terminal-overlay"></div>
     <nav class="navbar">
-        <h1>Hacker Hub</h1>
+        <h1>HACKER HUB_</h1>
         <ul>
-            <li><a href="#notes">Notes</a></li>
-            <li><a href="#links">Useful Links</a></li>
-            <li><a href="#games">Games</a></li>
-            <li><a href="#important" id="open-important">Important</a></li>
+            <li><a href="#notes">NOTES</a></li>
+            <li><a href="#links">LINKS</a></li>
+            <li><a href="#games">GAMES</a></li>
+            <li><a href="#important" id="open-important">IMPORTANT</a></li>
         </ul>
     </nav>
     
-    <div class="sidebar">
-        <h2>Menu</h2>
-        <ul>
-            <li><a href="#notes">📝 Notes</a></li>
-            <li><a href="#links">🔗 Useful Links</a></li>
-            <li><a href="#games">🎮 Games</a></li>
-            <li><a href="#important" id="open-important">⚠️ Important</a></li>
-        </ul>
-    </div>
-    
     <div class="content">
-        <section id="notes">
-            <h2>Notes</h2>
+        <section id="notes" class="section-box">
+            <h2>> Notes</h2>
             <textarea id="notesArea" placeholder="Write your notes here..."></textarea>
         </section>
 
-        <section id="links">
-            <h2>Useful Links</h2>
+        <section id="links" class="section-box">
+            <h2>> Useful Links</h2>
             <ul>
                 <li><a href="https://google.com" target="_blank">Google</a></li>
                 <li><a href="https://github.com" target="_blank">GitHub</a></li>
             </ul>
         </section>
 
-        <section id="games">
-            <h2>Mini Games</h2>
+        <section id="games" class="section-box">
+            <h2>> Mini Games</h2>
             <iframe src="https://play2048.co/" width="300" height="400"></iframe>
             <iframe src="https://cdn.jsdelivr.net/gh/chvin/react-pong@gh-pages/index.html" width="300" height="400"></iframe>
             <iframe src="https://chromedino.com/" width="300" height="400"></iframe>
@@ -52,67 +43,79 @@
 
     <div id="important-modal" class="modal">
         <div class="modal-content">
-            <h2>Enter Password</h2>
+            <h2>> Enter Password</h2>
             <input type="password" id="passwordInput" placeholder="Password">
             <button onclick="checkPassword()">Submit</button>
             <p id="error-message"></p>
         </div>
     </div>
 
-    <div id="api-fun">
-        <h2>Random Fun Fact</h2>
-        <p id="fun-fact">Loading...</p>
-        <button onclick="fetchFunFact()">Get New Fact</button>
-    </div>
-
     <style>
         body {
-            background-color: #0d0d0d;
-            color: #00ffcc;
+            background-color: #000;
+            color: #00ff00;
             font-family: 'Courier New', monospace;
-            text-shadow: 0 0 5px #00ffcc;
+            text-shadow: 0 0 5px #00ff00;
+            overflow: hidden;
+        }
+        .terminal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                rgba(0, 255, 0, 0.1),
+                rgba(0, 255, 0, 0.1) 1px,
+                transparent 2px,
+                transparent 3px
+            );
+            z-index: -1;
         }
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             background-color: #111;
-            padding: 10px 20px;
-            box-shadow: 0 0 10px #00ffcc;
+            padding: 15px 20px;
+            box-shadow: 0 0 10px #00ff00;
         }
         .navbar h1 {
-            color: #00ffcc;
+            color: #00ff00;
         }
         .navbar ul {
             list-style: none;
             display: flex;
-            gap: 20px;
+            gap: 15px;
         }
         .navbar a {
-            color: #00ffcc;
+            color: #00ff00;
             text-decoration: none;
             transition: 0.3s;
         }
         .navbar a:hover {
-            color: #ff00ff;
-        }
-        .sidebar {
-            width: 200px;
-            position: fixed;
-            height: 100%;
-            background-color: #111;
-            padding: 20px;
-            box-shadow: 0 0 10px #00ffcc;
+            color: #ff0000;
         }
         .content {
-            margin-left: 220px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
             padding: 20px;
+            justify-content: center;
+        }
+        .section-box {
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid #00ff00;
+            padding: 15px;
+            box-shadow: 0 0 10px #00ff00;
+            width: 300px;
+            text-align: center;
         }
         textarea {
             width: 100%;
             height: 150px;
-            background-color: #222;
-            color: #00ffcc;
+            background-color: #111;
+            color: #00ff00;
             border: none;
             padding: 10px;
             font-family: 'Courier New', monospace;
@@ -132,7 +135,7 @@
             margin: 20% auto;
             width: 300px;
             text-align: center;
-            box-shadow: 0 0 10px #00ffcc;
+            box-shadow: 0 0 10px #00ff00;
         }
     </style>
 
@@ -145,14 +148,6 @@
             } else {
                 document.getElementById('error-message').textContent = 'Incorrect Password!';
             }
-        }
-
-        function fetchFunFact() {
-            fetch('https://uselessfacts.jsph.pl/random.json?language=en')
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('fun-fact').textContent = data.text;
-                });
         }
     </script>
 </body>
