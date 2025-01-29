@@ -3,155 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodeShop - Minimalist Coding Store</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Interactive Calendar</title>
     <style>
         body {
-            background-color: #121212;
-            color: #ccc;
-            font-family: 'Fira Code', monospace;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+
+        .calendar {
+            width: 350px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
-        .navbar {
-            background-color: #1e1e1e;
-            padding: 15px;
-        }
-        .navbar a {
-            color: #00ff99;
-            text-decoration: none;
-            margin: 0 15px;
-        }
-        .hero {
-            padding: 50px;
-            color: #00ff99;
-        }
-        .products {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-template-rows: repeat(3, 200px);
-            gap: 20px;
-            padding: 20px;
-        }
-        .card {
-            background-color: #1e1e1e;
-            padding: 20px;
-            border: 1px solid #00ff99;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+        .header {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            position: relative;
+            margin-bottom: 10px;
         }
-        .card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 15px rgba(0, 255, 153, 0.4);
+
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
         }
-        .calendar-container {
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .weekdays {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 20px;
+            justify-content: space-between;
+            font-weight: bold;
+            margin-bottom: 5px;
         }
-        .calendar {
+
+        .days {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
             gap: 5px;
-            width: 100%;
-            max-width: 350px;
-            background: #222;
-            padding: 10px;
-            border-radius: 5px;
         }
-        .date {
+
+        .day {
             padding: 10px;
-            background: #333;
-            border: 1px solid #00ff99;
-            cursor: pointer;
-            transition: 0.3s;
             text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
         }
-        .date:hover {
-            background: #00ff99;
-            color: #121212;
-        }
-        .popup {
-            display: none;
-            position: absolute;
-            background: #222;
-            color: #00ff99;
-            padding: 10px;
-            border: 1px solid #00ff99;
-            top: 50px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200px;
-        }
-        .footer {
-            background-color: #1e1e1e;
-            padding: 20px;
-            margin-top: 20px;
+
+        .day.today {
+            background: #007bff;
+            color: white;
         }
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <a href="#">Home</a>
-        <a href="#">Shop</a>
-        <a href="#">Contact</a>
-        <a href="calendar.html">Edit Calendar</a>
-    </div>
-    <div class="hero">
-        <h1>Welcome to CodeShop</h1>
-        <p>The best place for tech-inspired products.</p>
-    </div>
-    <div class="products">
-        <div class="card">
-            <h3>Product 1</h3>
-            <p>$29.99</p>
-            <button class="btn">Buy Now</button>
+    <div class="calendar">
+        <div class="header">
+            <button id="prevMonth">&lt;</button>
+            <h2 id="monthYear"></h2>
+            <button id="nextMonth">&gt;</button>
         </div>
-        <div class="card">
-            <h3>Product 2</h3>
-            <p>$39.99</p>
-            <button class="btn">Buy Now</button>
+        <div class="weekdays">
+            <span>Sun</span> <span>Mon</span> <span>Tue</span> <span>Wed</span>
+            <span>Thu</span> <span>Fri</span> <span>Sat</span>
         </div>
-        <div class="card calendar-container">
-            <h3>Calendar</h3>
-            <div class="calendar" id="calendar"></div>
-            <div class="popup" id="popup"></div>
-        </div>
+        <div id="daysContainer" class="days"></div>
     </div>
-    <div class="footer">
-        <p>&copy; 2025 CodeShop. All Rights Reserved.</p>
-    </div>
+
     <script>
-        function generateCalendar() {
-            let calendar = document.getElementById('calendar');
-            calendar.innerHTML = '';
-            for (let i = 1; i <= 30; i++) {
-                let dateElement = document.createElement('div');
-                dateElement.classList.add('date');
-                dateElement.innerText = i;
-                dateElement.onmouseover = function(event) {
-                    showPopup(event, `Event on ${i}: Meeting at 3 PM`);
-                };
-                dateElement.onmouseout = hidePopup;
-                calendar.appendChild(dateElement);
+        document.addEventListener("DOMContentLoaded", () => {
+            const monthYear = document.getElementById("monthYear");
+            const daysContainer = document.getElementById("daysContainer");
+            const prevMonthBtn = document.getElementById("prevMonth");
+            const nextMonthBtn = document.getElementById("nextMonth");
+
+            let currentDate = new Date();
+            let currentMonth = currentDate.getMonth();
+            let currentYear = currentDate.getFullYear();
+
+            function renderCalendar(month, year) {
+                daysContainer.innerHTML = "";
+                const firstDay = new Date(year, month, 1).getDay();
+                const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+                monthYear.textContent = new Date(year, month).toLocaleDateString("en-US", { month: "long", year: "numeric" });
+
+                for (let i = 0; i < firstDay; i++) {
+                    const emptyDiv = document.createElement("div");
+                    emptyDiv.classList.add("day");
+                    daysContainer.appendChild(emptyDiv);
+                }
+
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const dayDiv = document.createElement("div");
+                    dayDiv.textContent = day;
+                    dayDiv.classList.add("day");
+
+                    if (day === currentDate.getDate() && month === currentDate.getMonth() && year === currentDate.getFullYear()) {
+                        dayDiv.classList.add("today");
+                    }
+
+                    daysContainer.appendChild(dayDiv);
+                }
             }
-        }
-        function showPopup(event, text) {
-            let popup = document.getElementById('popup');
-            popup.innerHTML = text;
-            popup.style.display = 'block';
-            popup.style.top = `${event.clientY + 10}px`;
-            popup.style.left = `${event.clientX}px`;
-        }
-        function hidePopup() {
-            let popup = document.getElementById('popup');
-            popup.style.display = 'none';
-        }
-        generateCalendar();
+
+            prevMonthBtn.addEventListener("click", () => {
+                currentMonth--;
+                if (currentMonth < 0) {
+                    currentMonth = 11;
+                    currentYear--;
+                }
+                renderCalendar(currentMonth, currentYear);
+            });
+
+            nextMonthBtn.addEventListener("click", () => {
+                currentMonth++;
+                if (currentMonth > 11) {
+                    currentMonth = 0;
+                    currentYear++;
+                }
+                renderCalendar(currentMonth, currentYear);
+            });
+
+            renderCalendar(currentMonth, currentYear);
+        });
     </script>
 </body>
 </html>
