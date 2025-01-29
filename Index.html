@@ -5,6 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Dashboard</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        .app {
+            background-color: lightgray;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .app:hover {
+            transform: scale(1.1);
+            background-color: #ffcc00;
+        }
+    </style>
 </head>
 <body>
     <div id="login-container" class="hidden">
@@ -28,6 +45,29 @@
         </div>
     </div>
     
-    <script src="script.js"></script>
+    <script>
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            if (username === 'admin' && password === 'password') {
+                document.getElementById('login-container').classList.add('hidden');
+                document.getElementById('dashboard').classList.remove('hidden');
+            } else {
+                document.getElementById('login-error').innerText = 'Invalid credentials';
+            }
+        }
+
+        function logout() {
+            document.getElementById('dashboard').classList.add('hidden');
+            document.getElementById('login-container').classList.remove('hidden');
+        }
+
+        function editApp(element) {
+            const newText = prompt("Enter new text:", element.innerText);
+            if (newText) {
+                element.innerText = newText;
+            }
+        }
+    </script>
 </body>
 </html>
