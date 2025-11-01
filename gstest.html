@@ -3,79 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>3D Iframe Example</title>
+  <title>Interactive Background Map</title>
   <style>
-    /* Base reset for consistent rendering */
+    /* Base setup */
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
 
     body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background: #f0f0f0;
-      font-family: sans-serif;
-    }
-
-    .iframe-container {
+      margin: 0;
+      padding: 0;
+      overflow: hidden; /* Prevent scrollbars */
       position: relative;
-      width: 300px;
-      height: 200px;
-      perspective: 600px; /* Slightly increased for better 3D depth */
+      height: 100vh;
+      width: 100vw;
+      background-color: #000; /* fallback color if image fails */
     }
 
-    .iframe-wrapper {
-      width: 100%;
-      height: 100%;
-      transform-style: preserve-3d;
-      transform: rotateY(45deg);
-      transition: transform 0.5s ease;
-    }
-
-    /* Optional hover animation */
-    .iframe-container:hover .iframe-wrapper {
-      transform: rotateY(0deg);
-    }
-
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
+    img {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover; /* Prevents image distortion */
       display: block;
-      backface-visibility: hidden;
-      border-radius: 8px; /* Adds a modern touch */
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     }
 
-    /* Optional: visually hide unused image map */
-    map {
-      display: none;
+    /* Accessibility + hover feedback */
+    area {
+      outline: 2px solid transparent;
+      transition: outline-color 0.2s ease;
+      cursor: pointer;
+    }
+
+    area:hover {
+      outline-color: rgba(255, 0, 0, 0.8);
     }
   </style>
 </head>
 <body>
-  <div class="iframe-container">
-    <div class="iframe-wrapper">
-      <iframe 
-        src="https://tinych00.github.io/TiptoeSoleStore" 
-        title="Transform Example 1"
-        loading="lazy"
-        allowfullscreen>
-      </iframe>
-    </div>
-  </div>
 
-  <!-- Image map (currently unused, but retained for reference) -->
+  <!-- Background image -->
+  <img src="assets/temoral.png" alt="Workplace" usemap="#workmap">
+
+  <!-- Image map (clickable areas) -->
   <map name="workmap">
-    <area 
-      shape="poly" 
-      coords="275,380,562,371,564,515,285,574" 
-      alt="Computer1" 
-      href="Heavenly_black.html">
+    <area shape="poly" coords="275,380,562,371,564,515,285,574" alt="Computer1" href="Heavenly_black.html">
+    <area shape="poly" coords="566,372,797,370,796,502,568,516" alt="Computer2" href="Heavenly_black.html">
+    <area shape="poly" coords="801,371,1048,372,1042,516,802,501" alt="Computer3" href="Heavenly_black.html">
+    <area shape="poly" coords="73,515,212,501,221,583,82,603" alt="Computer4" href="Heavenly_black.html">
   </map>
+
+  <!-- ✅ Responsive image map add-on -->
+  <script src="https://cdn.jsdelivr.net/npm/image-map-resizer@1.0.10/js/imageMapResizer.min.js"></script>
+  <script>
+    window.addEventListener('load', () => {
+      if (typeof imageMapResize === 'function') {
+        imageMapResize();
+      }
+    });
+  </script>
+
 </body>
 </html>
