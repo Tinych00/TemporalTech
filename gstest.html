@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Interactive Background Map</title>
   <style>
-    /* Base setup */
+    /* Global setup */
     * {
       box-sizing: border-box;
     }
@@ -13,24 +13,24 @@
     body {
       margin: 0;
       padding: 0;
-      overflow: hidden; /* Prevent scrollbars */
+      overflow: hidden;
       position: relative;
       height: 100vh;
       width: 100vw;
-      background-color: #000; /* fallback color if image fails */
+      background-color: #000; /* fallback if image fails to load */
     }
 
     img {
       width: 100vw;
       height: 100vh;
-      object-fit: cover; /* Prevents image distortion */
+      object-fit: cover; /* maintain aspect ratio */
       display: block;
     }
 
-    /* Accessibility + hover feedback */
+    /* Accessibility & hover feedback */
     area {
       outline: 2px solid transparent;
-      transition: outline-color 0.2s ease;
+      transition: outline-color 0.25s ease;
       cursor: pointer;
     }
 
@@ -41,10 +41,10 @@
 </head>
 <body>
 
-  <!-- Background image -->
+  <!-- Background image with clickable regions -->
   <img src="assets/temoral.png" alt="Workplace" usemap="#workmap">
 
-  <!-- Image map (clickable areas) -->
+  <!-- Image map -->
   <map name="workmap">
     <area shape="poly" coords="275,380,562,371,564,515,285,574" alt="Computer1" href="Heavenly_black.html">
     <area shape="poly" coords="566,372,797,370,796,502,568,516" alt="Computer2" href="Heavenly_black.html">
@@ -52,8 +52,10 @@
     <area shape="poly" coords="73,515,212,501,221,583,82,603" alt="Computer4" href="Heavenly_black.html">
   </map>
 
-  <!-- ✅ Responsive image map add-on -->
+  <!-- Image Map Resizer library -->
   <script src="https://cdn.jsdelivr.net/npm/image-map-resizer@1.0.10/js/imageMapResizer.min.js"></script>
+
+  <!-- Initialize resizer -->
   <script>
     window.addEventListener('load', () => {
       if (typeof imageMapResize === 'function') {
